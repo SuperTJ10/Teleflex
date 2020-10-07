@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+
+<TITLE>Telefex</TITLE>
+<!-- This is the text on the tab of the browser -->
+
+<SCRIPT>
+// Section to write Javascript
+
+// This is to create the date of the print out, dont change
+var g_arrMonths = new Array()
+
+var strTitle = ""
+
+g_arrMonths[0] = "January"
+g_arrMonths[1] = "February"
+g_arrMonths[2] = "March"
+g_arrMonths[3] = "April"
+g_arrMonths[4] = "May"
+g_arrMonths[5] = "June"
+g_arrMonths[6] = "July"
+g_arrMonths[7] = "August"
+g_arrMonths[8] = "September"
+g_arrMonths[9] = "October"
+g_arrMonths[10] = "November"
+g_arrMonths[11] = "December"
+
+///////////////////////////////////////////////////////////
+
+// This is taking the storyline variables and creating JS variables
+
+var player = window.opener.GetPlayer();
+
+var r1 = player.GetVar("Rank1");
+var r2 = player.GetVar("Rank2");
+var r3 = player.GetVar("Rank3");
+var r4 = player.GetVar("Rank4");
+var r5 = player.GetVar("Rank5");
+
+var ES1 = player.GetVar("ES1");
+var ES2 = player.GetVar("ES2");
+var ES3 = player.GetVar("ES3");
+var ES4 = player.GetVar("ES4");
+var ES5 = player.GetVar("ES5");
+
+var ES = [ES1, ES2, ES3, ES4, ES5]
+
+// Items for Entrpenurial spirit (ES) drop box put into array []
+// this is just for the for loop that will be used to create the table
+// later on
+
+var BT1 = player.GetVar("BT1");
+var BT2 = player.GetVar("BT2");
+var BT3 = player.GetVar("BT3");
+var BT4 = player.GetVar("BT4");
+var BT5 = player.GetVar("BT5");
+
+var BT = [BT1, BT2, BT3, BT4, BT5]
+
+var MIF1 = player.GetVar("MIF1");
+var MIF2 = player.GetVar("MIF2");
+var MIF3 = player.GetVar("MIF3");
+var MIF4 = player.GetVar("MIF4");
+var MIF5 = player.GetVar("MIF5");
+
+var MIF = [MIF1, MIF2, MIF3, MIF4, MIF5]
+
+var P1 = player.GetVar("P1");
+var P2 = player.GetVar("P2");
+var P3 = player.GetVar("P3");
+var P4 = player.GetVar("P4");
+var P5 = player.GetVar("P5");
+
+var P = [P1, P2, P3, P4, P5]
+
+var NA1 = player.GetVar("NA1");
+var NA2 = player.GetVar("NA2");
+var NA3 = player.GetVar("NA3");
+var NA4 = player.GetVar("NA4");
+var NA5 = player.GetVar("NA5");
+
+var NA = [NA1, NA2, NA3, NA4, NA5]
+
+// Text answers from last slide
+
+var A1 = player.GetVar("Answer1");
+var A2 = player.GetVar("Answer2");
+var A3 = player.GetVar("Answer3");
+
+
+// More date code, dont change
+
+function FormatDate(dtmDate)
+{
+	var strResult = "";
+	var nHours = dtmDate.getHours();
+	var strAM = "am";
+	var nMinutes = dtmDate.getMinutes();
+	var strMinutes = "" + nMinutes;
+
+	if (nMinutes < 10)
+	{
+		strMinutes = "0" + nMinutes;
+	}
+
+	if (nHours == 12)
+	{
+		strAM = "pm";
+	}
+
+	if (nHours > 12)
+	{
+		nHours -= 12;
+		strAM = "pm";
+	}
+	
+	strResult += g_arrMonths[dtmDate.getMonth()] + " ";
+	strResult += dtmDate.getDate() + ", ";
+	strResult += dtmDate.getFullYear() + "  ";
+	strResult += nHours + ":";
+	strResult += strMinutes + " ";
+	strResult += strAM;
+	return strResult;
+}
+
+</SCRIPT>
+
+<STYLE>
+
+/* 
+This is all styling done in css, you can match each title to their html section
+and change their style using the formatting below
+*/
+
+H1 {
+	font-size:28pt;
+	font-family:arial;
+	text-align: left;
+}
+
+H2 {
+	font-size:20pt;
+	font-family:arial;
+	text-align: left;
+  font-weight: lighter;
+}
+
+H3 {
+	font-size:12pt;
+	font-family:arial;
+	text-align: center;
+}
+
+@media print {
+	.noPrint {
+  		display:none;
+		}
+}
+
+.certcontainer {
+    position: absolute;
+    width: 1000px;
+    height: 700px;
+    left: auto;
+    right: auto;
+}
+
+.erdf {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 10;
+    height: 60px;
+}
+
+.textcontainer {
+    position: absolute;
+    left: 50px;
+    right: 150px;
+    top: 100px;
+}
+
+table {
+  width: 100%;
+  border: 4px solid rgb(0, 0, 0);
+  font-size: 20pt;
+  text-align: center;
+}
+
+</STYLE>
+</HEAD>
+
+<BODY>
+
+<div class=certcontainer>
+<img src="./TFX_original.png" class="erdf" />
+
+<!-- Above is the image file for the logo -->
+
+<div class=textcontainer>
+
+<H3 class=noPrint>You can close this window down and exit the course after printing.</H3>
+
+<!-- H1 is styling H1 in the css section -->
+<H1>Your motivators ranked:</H1>
+
+
+<SCRIPT>
+// This just shows the users 5 variables in the order they ranked them
+  document.write("<H2> Answer 1: "+ r1 + "</H2>");
+  document.write("<H2> Answer 2: "+ r2 + "</H2>");
+  document.write("<H2> Answer 3: "+ r3 + "</H2>");
+  document.write("<H2> Answer 4: "+ r4 + "</H2>");
+  document.write("<H2> Answer 5: "+ r5 + "</H2>");
+</SCRIPT>
+
+<H1>How you matched to the company: </H1>
+
+<TABLE CELLSPACING = "8px" CELLPADDING = "6px">
+	<!-- This is the table showing where they put each answer-->
+	<TR BGCOLOR = "lightgrey">
+	   <TH>  Entrepreneurial spirit  </TH>
+	   <TH>  Building Trust  </TH>
+	   <TH>  Make it fun  </TH>
+	   <TH>  People  </TH>
+	</TR>
+	<TR>
+	   <TD><SCRIPT>
+		   // Each 'for loop' looks through the arrays of variable created earlier,
+		   // and if the variable is = "" which means if it is blank,
+		   // this variable will not be added as a row in the table but
+		   // if it is not = "" it will be written in,
+		   // this is for formatting anf removing blank spaces
+		  for (i in ES)
+        if (ES[i] != "")
+          document.write(ES[i] + "<br>")
+        else
+          console.log("skip");
+		</SCRIPT></TD>
+	   <TD><SCRIPT>
+      for (i in BT)
+          if (BT[i] != "")
+            document.write(BT[i] + "<br>")
+          else
+            console.log("skip");
+	  </SCRIPT></TD>
+	  <TD><SCRIPT>
+      for (i in MIF)
+          if (MIF[i] != "")
+            document.write(MIF[i] + "<br>")
+          else
+            console.log("skip");
+	  </SCRIPT></TD>
+	  <TD><SCRIPT>
+      for (i in P)
+          if (P[i] != "")
+            document.write(P[i] + "<br>")
+          else
+            console.log("skip");
+	  </SCRIPT></TD>
+	</TR>
+ </TABLE>
+
+ <BR>
+
+ <TABLE>
+	 <!-- Table for the 'unsure' variables -->
+	<TR BGCOLOR = "lightgrey">
+	   <TH>  Discussion points  </TH>
+	</TR>
+	<TR>
+	   <TD><SCRIPT>
+      for (i in NA)
+          if (NA[i] != "")
+            document.write(NA[i] + "<br>")
+          else
+            console.log("skip");
+		</SCRIPT></TD>
+	</TR>
+ </TABLE>
+
+
+<!-- Section for the last slide answers -->
+ <H2>What do you currently do that meet the values? </H1>
+ <SCRIPT>
+	  document.write(A1);
+</SCRIPT>
+ <H2>What more could you do individually to meet the values?</H1>
+ <SCRIPT>
+	document.write(A2);
+</SCRIPT>
+ <H2>What more could you do within your team to meet the values? </H1>
+ <SCRIPT>
+	document.write(A3);
+</SCRIPT>
+
+
+</div>
+</div>
+	
+
+<SCRIPT>
+	window.print();
+
+</SCRIPT>
+
+</BODY>
+</HTML>
